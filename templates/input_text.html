@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Input Text</h1>
+<form method="POST" action="{{ url_for('input_text') }}">
+    {{ form.csrf_token }}
+    {{ form.text.label }} {{ form.text() }}
+    {{ form.submit() }}
+</form>
+{% endblock %}
+
