@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <head>
   <title>OpenAI Quickstart</title>
   <link
@@ -18,41 +18,8 @@
   {% if result %}
   <div class="result">{{ result }}</div>
   {% endif %}
-</body> -->
+</body>
 
-{% extends 'base.html' %}
 
-{% block content %}
-  <h1>Writing Assistant</h1>
-  <form method="POST">
-    {{ form.csrf_token }}
-    {{ form.input_text.label }} {{ form.input_text() }}
-    {{ form.submit() }}
-  </form>
-
-  {% if grammarcheck %}
-    <h2>Grammar check</h2>
-    <p>{{ grammarcheck | safe }}</p>
-  {% endif %}
-
-  {% if plagiarism_check %}
-    <h2>Plagiarism check</h2>
-    <p>{{ plagiarism_check | safe }}</p>
-  {% endif %}
-
-  {% if completion_text %}
-    <h2>Text completion</h2>
-    <p>{{ completion_text }}</p>
-  {% endif %}
-
-  {% if paraphrased_texts %}
-    <h2>Paraphrasing</h2>
-    <ul>
-      {% for paraphrased_text in paraphrased_texts %}
-        <li>{{ paraphrased_text }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-{% endblock %}
 
 
