@@ -21,10 +21,10 @@ six==1.16.0
 toml==0.10.2
 tqdm==4.62.3
 urllib3==1.26.7
-Werkzeug==2.0.2
 Flask==2.0.2
 Flask-WTF==1.1.1
 google-auth==2.17.3
 flask-login==0.6.2
 Flask-SQLAlchemy==3.0.3
 Flask-Migrate==4.0.4
+Werkzeug==2.3.2
