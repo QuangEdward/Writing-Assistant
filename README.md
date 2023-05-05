@@ -25,8 +25,13 @@
    ```bash
    $ pip install -r requirements.txt
    ```
-
-6. Run the app:
+   
+6. Fill OpenAI API key parameter at .env file:
+    ```bash
+   OPENAI_API_KEY= <API_KEY>
+   ```
+ 
+7. Run the app:
 
    ```bash
    $ flask run
