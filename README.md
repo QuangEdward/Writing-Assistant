@@ -26,7 +26,10 @@
    $ pip install -r requirements.txt
    ```
    
-6. Fill API Key parameter at env.file
+6. Fill OpenAI API key parameter at env.file:
+    ```bash
+   OPENAI_API_KEY= <API_KEY>
+   ```
  
 7. Run the app:
 
