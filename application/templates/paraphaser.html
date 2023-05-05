@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+<h1>Paraphrasing Tool</h1>
+<hr>
+<form method="post">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.input_text.label(class="form-control-label") }}
+      {{ form.input_text(class="form-control") }}
+    </div>
+    <button type="submit" class="btn btn-primary">Paraphase</button>
+</form>
+
+<!-- {% if paraphrase_check %}
+    <p>Paraphrased text: {{ paraphrase_check }}</p>
+{% endif %} -->
+{% if paraphrase_check %}
+    <ol>
+        <li>{{ paraphrase_check }}</li>
+    </ol>
+{% endif %}
+
+<!-- <h1>Paraphrasing</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.input_text.label }}
+        {{ form.input_text(size=40) }}
+    </p>
+    <p><input type="submit" value="Paraphrase"></p>
+</form>
+{% if paraphrases %}
+    <h2>Paraphrased Text:</h2>
+    {% for paraphrase in paraphrases %}
+        <p>{{ paraphrase }}</p>
+    {% endfor %}
+{% endif %}
+{% endblock %} -->
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Paraphraser</title>
+</head>
+<body>
+    <h1>Paraphraser</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.input_text.label }}
+            {{ form.input_text(size=40) }}
+            {% for error in form.input_text.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p><input type="submit" value="Paraphrase"></p>
+    </form>
+
+    {% if paraphrase_check %}
+    <h2>Paraphrase:</h2>
+    <p>{{ paraphrase_check }}</p>
+    {% endif %}
+</body>
+</html> -->
