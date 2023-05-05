@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+<h1>Text Completion Tool</h1>
+<hr>
+<form method="post">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.input_text.label(class="form-control-label") }}
+      {{ form.input_text(class="form-control") }}
+    </div>
+    <button type="submit" class="btn btn-primary">Completion</button>
+</form>
+{% if completion %}
+    <ol>
+        <li>{{ completion }}</li>
+    </ol>
+{% endif %}
+{% endblock %}
