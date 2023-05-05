@@ -25,8 +25,10 @@
    ```bash
    $ pip install -r requirements.txt
    ```
-
-6. Run the app:
+   
+6. Fill API Key parameter at env.file
+ 
+7. Run the app:
 
    ```bash
    $ flask run
