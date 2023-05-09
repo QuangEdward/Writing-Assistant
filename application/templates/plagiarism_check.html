@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Plagiarism Check</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.input_text.label(class="form-control-label") }}
+      {{ form.input_text(class="form-control") }}
+    </div>
+    <button type="submit" class="btn btn-primary">Paraphase</button>
+</form>
+<ul>
+    {% for result in plagiarism_check %}
+    <li>
+        <p>Article: {{ result.article }}</p>
+        <p>Plagiarism score: {{ result.plagiarism_score }}</p>
+    </li>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}
+
+
