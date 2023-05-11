@@ -13,8 +13,11 @@
     <button type="submit" class="btn btn-primary">Completion</button>
 </form>
 {% if completion %}
-    <ol>
-        <li>{{ completion }}</li>
-    </ol>
+    <h2>Results:</h2>
+    <ul>
+    {% for completions in completion %}
+        <li>{{ completions }}</li>
+    {% endfor %}
+    </ul>
 {% endif %}
 {% endblock %}

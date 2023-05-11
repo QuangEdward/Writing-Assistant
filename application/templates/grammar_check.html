@@ -27,12 +27,12 @@
     {% endfor %}
   </ul>
   {% endif %}
-  {% if spell_errors %}
+  {% if fix_errors %}
   <hr>
-  <h3>Spelling Errors</h3>
+  <h3>Correction for the following text</h3>
   <ul>
-    {% for error in spell_errors %}
-    <li>{{ error }}</li>
+    {% for fix_error in fix_errors %}
+    <li>{{ fix_error|safe }}</li>
     {% endfor %}
   </ul>
   {% endif %}

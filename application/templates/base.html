@@ -17,6 +17,13 @@
       <li class='nav-link'>
         <a href="{{url_for('core.info')}}">About</a>
       </li>
+      {% if current_user.is_authenticated %}
+      <li class='nav-link'>
+        <a href="{{url_for('users.logout')}}">Log Out</a>
+      </li>
+      <li class='nav-link'>
+        <a href="{{url_for('users.account')}}">Account</a>
+      </li>
       <li class='nav-link'>
         <a href="{{url_for('paraphrasing.index')}}">Paraphase</a>
       </li>
@@ -27,20 +34,16 @@
         <a href="{{url_for('grammar_check.index')}}">Grammar check</a>
       </li>
       <li class='nav-link'>
-        <a href="{{url_for('grammar_check.index')}}">Plagiarism</a>
+        <a href="{{url_for('plagiarism_check.index')}}">Plagiarism</a>
+      </li>
+      {% else %}
+      <li class='nav-link'>
+        <a href="{{url_for('users.login')}}">Log In</a>
       </li>
       <li class='nav-link'>
-        <a href="#">Log Out</a>
+        <a href="{{url_for('users.register')}}">Register</a>
       </li>
-      <li class='nav-link'>
-        <a href="#">Account</a>
-      </li>
-      <li class='nav-link'>
-        <a href="#">Log In</a>
-      </li>
-      <li class='nav-link'>
-        <a href="#">Register</a>
-      </li>
+      {% endif %}
     </ul>
 <div class="container">
   {% block content %}

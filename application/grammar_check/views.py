@@ -68,8 +68,8 @@ def highlight_errors(text, suggestion):
 def gram(text):
     response = openai.Completion.create(
         engine="text-davinci-003",
-        prompt=f"Please check my grammar and highlight it. {text}",
-        max_tokens=1000,
+        prompt=f"I want you to act as a brilliant grammar checker who can correct any wrong English grammars. Please correct grammar in the following texts.{text}",
+        max_tokens=1024,
         n=1,
         stop=None,
         temperature=0.6,
@@ -81,48 +81,36 @@ def gram(text):
 
     return highlighted_text, errors
 
-def spell_check(text):
-    # response = openai.Completio n.create(
-    #     engine="text-davinci-003",
-    #     prompt=f"Please give me suggestion to fix word. {text}",
-    #     max_tokens=60,
-    #     n=1,
-    #     stop=None,
-    #     temperature=0.6,
-    # )
+def fix(text):
     response = openai.Completion.create(
-    model="text-davinci-003",
-    # prompt="Correct this to standard English:\n\nShe no went to the market.",
-    prompt=f"Correct this to standard English {text}",
-    temperature=0,
-    max_tokens=60,
-    top_p=1.0,
-    frequency_penalty=0.0,
-    presence_penalty=0.0
+        engine="text-davinci-003",
+        prompt=f"I want you to act as a brilliant grammar checker who can correct any wrong English grammars. Please correct grammar in the following text to give me the suggestion to fix it .{text}",
+        max_tokens=1024,
+        n=1,
+        stop=None,
+        temperature=0.6,
     )
 
-    suggestion = response.choices[0].text.strip()
+    suggestion = [choice.text.strip() for choice in response.choices]
 
-    highlighted_text, errors = highlight_errors(text, suggestion)
+    return suggestion
 
-    return highlighted_text, errors
+
+
 
 @grammar_check.route('/', methods =['GET','POST'])
 def index():
     form = InputForm()
     highlighted_text = None
     grammar_errors = None
-    spell_errors = None
 
     if form.validate_on_submit():
         input_text = form.input_text.data
 
         # perform grammar check
         highlighted_text, grammar_errors = gram(input_text)
+        fix_errors = fix(input_text)
 
-        # perform spell check
-        highlighted_text, spell_errors = spell_check(highlighted_text)
-
-        return render_template('grammar_check.html', form=form, highlighted_text=highlighted_text, grammar_errors=grammar_errors, spell_errors=spell_errors)
+        return render_template('grammar_check.html', form=form, highlighted_text=highlighted_text, grammar_errors=grammar_errors, fix_errors = fix_errors)
 
     return render_template('grammar_check.html', form=form)

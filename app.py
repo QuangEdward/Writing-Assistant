@@ -5,7 +5,7 @@ from application import app
 
 app.config['SECRET_KEY'] = 'mysecretkey'
 openai.api_key = os.getenv("OPENAI_API_KEY")
-
+app.app_context().push()
 
 # @app.route("/", methods=("GET", "POST"))
 # def index():
