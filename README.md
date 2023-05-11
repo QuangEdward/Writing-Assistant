@@ -30,7 +30,8 @@
    $ pip install -r requirements.txt
    ```
    
-6. Fill OpenAI API key parameter at .env file:
+6. Fill OpenAI API key at .env file:
+
     ```bash
    OPENAI_API_KEY= <API_KEY>
    ```
@@ -38,7 +39,7 @@
 7. Run the app:
 
    ```bash
-   $ flask run
+   $ flask --debug run
    ```
 
 You should now be able to access the app at [http://localhost:5000](http://localhost:5000)! 
