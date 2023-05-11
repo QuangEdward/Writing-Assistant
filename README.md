@@ -8,7 +8,7 @@
 2. Clone this repository:
 
    ```bash
-   git clone https://github.com/openai/openai-quickstart-node.git
+   git clone https://github.com/QuangEdward/Writing-Assistant.git
    ```
 
 3. Navigate into the project directory:
