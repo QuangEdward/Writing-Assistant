@@ -3,7 +3,7 @@ import os
 import openai
 from flask import Blueprint, Flask, render_template, redirect, url_for, request, jsonify
 from application.paraphrasing.forms import InputForm
-
+from application.auth.auth_decorator import login_required
 openai.api_key = os.getenv("OPENAI_API_KEY")
 paraphrasing = Blueprint('paraphrasing',__name__, url_prefix='/paraphrasing')
 
@@ -11,7 +11,7 @@ paraphrasing = Blueprint('paraphrasing',__name__, url_prefix='/paraphrasing')
 def para(text):
     response = openai.Completion.create (
         engine="text-davinci-003",
-        prompt=f"Please paraphrase my text. {text}",
+        prompt=f"Please paraphrase the following text with the meaning not be changed.{text}",
         max_tokens=1000,
         n = 1,
         stop=None,
@@ -23,6 +23,7 @@ def para(text):
 
 
 @paraphrasing.route('/', methods =['GET','POST'])
+@login_required
 def index():
     form = InputForm()
     paraphrase_check = None

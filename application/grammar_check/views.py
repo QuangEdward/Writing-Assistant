@@ -4,6 +4,7 @@ import openai
 from flask import Blueprint, Flask, render_template, redirect, url_for, request, jsonify
 from application.grammar_check.forms import InputForm
 import spacy
+from application.auth.auth_decorator import login_required
 openai.api_key = os.getenv("OPENAI_API_KEY")
 grammar_check = Blueprint('grammar_check',__name__, url_prefix='/grammar_check')
 
@@ -68,7 +69,7 @@ def highlight_errors(text, suggestion):
 def gram(text):
     response = openai.Completion.create(
         engine="text-davinci-003",
-        prompt=f"I want you to act as a brilliant grammar checker who can correct any wrong English grammars. Please correct grammar in the following texts.{text}",
+        prompt=f"I want you to act as a brilliant grammar checker who can correct any wrong English grammars. Please correct grammar in the following texts. {text}",
         max_tokens=1024,
         n=1,
         stop=None,
@@ -84,7 +85,7 @@ def gram(text):
 def fix(text):
     response = openai.Completion.create(
         engine="text-davinci-003",
-        prompt=f"I want you to act as a brilliant grammar checker who can correct any wrong English grammars. Please correct grammar in the following text to give me the suggestion to fix it .{text}",
+        prompt=f"I want you to act as a brilliant grammar checker who can correct any wrong English grammars. Please rewrite all the text with the correct grammar and no paraphrase or completion text.{text}",
         max_tokens=1024,
         n=1,
         stop=None,
@@ -99,6 +100,7 @@ def fix(text):
 
 
 @grammar_check.route('/', methods =['GET','POST'])
+@login_required
 def index():
     form = InputForm()
     highlighted_text = None

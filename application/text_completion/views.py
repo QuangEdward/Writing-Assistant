@@ -3,6 +3,7 @@ import os
 import openai
 from flask import Blueprint, Flask, render_template, redirect, url_for, request, jsonify
 from application.text_completion.forms import InputForm
+from application.auth.auth_decorator import login_required
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 completion = Blueprint('text_completion',__name__, url_prefix='/text_completion')
@@ -24,6 +25,7 @@ def com(text):
     return completion_text
 
 @completion.route('/', methods =['GET','POST'])
+@login_required
 def index():
     form = InputForm()
     completion = None
