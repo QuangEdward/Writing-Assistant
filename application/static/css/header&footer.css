@@ -40,6 +40,9 @@ button.navbar-toggler{
     border-radius: 6px; 
     padding:  0.5em 1em !important;
 }
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
 .dropdown-menu{
     border-bottom: 1px solid rgba(12, 10, 90, 0.8) !important;
 }

@@ -8,15 +8,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="theme-color" content="#333" />
   <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" type="text/css" href="../static/css/header&footer.css" />
   <link rel="stylesheet" type="text/css" href="../static/css/teampage.css" />
-  <link rel="stylesheet" type="text/css" href="../static/css/header&footer.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="css/header&footer.css" />
   <link rel="icon" type="image/png"
     href="https://res.cloudinary.com/thecavemann/image/upload/v1571839870/logo_g4kuoa.png" />
-  <link rel="stylesheet" type="text/css" href="css/teampage.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -29,8 +25,6 @@
     apiKey: "vXj90M2ifAvu8fS739jFKepTXtES72ur59sGR5TPK9c="
   </script>
 </head>
-<div class="jumbotron">
-  <h1>Info about our team</h1>
   <main>
     <!--  TEAM -->
     <section id="team">
@@ -137,26 +131,6 @@
           </div>
         </div>
       </div>
-      <nav aria-label="Page navigation example" id="pagination" class="mb-4" data-aos="fade-up" data-aos-duration="1000"
-        data-aos-easing="ease-in-out">
-        <ul class="pagination justify-content-center">
-          <li class="page-item prev">
-            <a class="page-link" disabled>Previous</a>
-          </li>
-          <li class="page-item active">
-            <a class="page-link" href="teampage.html">1</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="teampage-2.html">2</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="teampage-3.html">3</a>
-          </li>
-          <li class="page-item next">
-            <a class="page-link" href="teampage-2.html">Next</a>
-          </li>
-        </ul>
-      </nav>
     </section>
   </main>
 
@@ -241,5 +215,5 @@
     scroll(rightCtn, "right");
     cards.forEach((card) => scroll(card, "bottom"));
   </script>
-</div>
+
 {% endblock %}

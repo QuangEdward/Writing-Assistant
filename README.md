@@ -5,11 +5,7 @@
 
 1. If you don’t have Python installed, [install it from here](https://www.python.org/downloads/).
 
-2. Clone this repository:
-
-   ```bash
-   $ git clone https://github.com/QuangEdward/Writing-Assistant.git
-   ``` 
+2. Clone this repository.
 
 3. Navigate into the project directory:
 
@@ -20,8 +16,8 @@
 4. Create a new virtual environment:
 
    ```bash
-   $ py -3 -m venv venv
-   $ venv\Scripts\activate
+   $ python -m venv venv
+   $ . venv/bin/activate
    ```
 
 5. Install the requirements:
@@ -29,17 +25,11 @@
    ```bash
    $ pip install -r requirements.txt
    ```
-   
-6. Fill OpenAI API key at .env file:
 
-    ```bash
-   OPENAI_API_KEY= <API_KEY>
-   ```
- 
-7. Run the app:
+6. Run the app:
 
    ```bash
-   $ flask --debug run
+   $ flask run
    ```
 
 You should now be able to access the app at [http://localhost:5000](http://localhost:5000)! 
