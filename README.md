@@ -10,26 +10,26 @@
 3. Navigate into the project directory:
 
    ```bash
-   cd Writing-Assistant
+   $ cd Writing-Assistant
    ```
 
 4. Create a new virtual environment:
 
    ```bash
-   python -m venv venv
-   venv/Scripts/activate
+   $ python -m venv venv
+   $ . venv/bin/activate
    ```
 
 5. Install the requirements:
 
    ```bash
-   pip install -r requirements.txt
+   $ pip install -r requirements.txt
    ```
 
 6. Run the app:
 
    ```bash
-   flask run
+   $ flask run
    ```
 
 You should now be able to access the app at [http://localhost:5000](http://localhost:5000)! 

@@ -11,6 +11,7 @@ body{
     width: 100%;
     height: 100%;
     background-color: #fafafa !important;
+    position: relative;
 }
 .fa-bars{
     color: #3B1F9E !important;
@@ -21,6 +22,10 @@ body{
 }
 .header{
     width: 100%;
+}
+.nav {
+    background-color: linear-gradient(to right, #FF4B2B, #FF416C);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
 }
 .navbar{
     background-color: #ffffff;
@@ -52,29 +57,37 @@ button.navbar-toggler{
 }
 .dropdown-menu a:hover{
     color: #ffffff !important;
-    background-color: #3B1F9E !important;
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
 }
 .nav-link ,.dropdown-item {
     color: rgba(12, 10, 90, 0.8) !important;
     font-style: normal;
     font-size: 1.2em;
-    line-height: 19px;
+    line-height: 40px;
 }
 .nav-link:hover{
-    background-color: #3B1F9E !important;
+    background: linear-gradient(to right, #FF4B2B, #FF416C) !important;
     color: #ffffff !important;
 }
 a:hover{
-    transition: 0.5s;
     color: #3B1F9E;
 }
 .top-nav-collapse {
     background-color: #fff;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
   }
+
+  #footer {
+    width: 100%;
+  }
  
   #footer ul{
       margin: 0 auto;
+  }
+
+  #docufix > span {
+    color:#F26767;
+    font-size: 20px;
   }
 
   #footer a{ 
@@ -93,10 +106,10 @@ a:hover{
       color: rgba(12, 10, 90, 0.8) !important;
   } 
  #footer p > a{
-      color: #3B1F9E !important;
+      color:#F26767 !important;
   }
   hr{
-      border:  1px solid #3B1F9E !important;
+      border:  1px solid #F26767 !important;
       width: 100%;
   }
   @media only screen and (max-width:450px){

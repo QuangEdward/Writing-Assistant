@@ -1,7 +1,7 @@
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -32,8 +32,8 @@ body > .container > #container {
 	background-color: #fff;
 	padding: 20px 40px;
 	border-radius: 10px;
-	border-top-left-radius: 0 !important;
-	border-bottom-left-radius: 0 !important;
+	border-top-right-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
 }
 
 .jumbotron {
@@ -44,8 +44,8 @@ body > .container > #container {
 	align-items: center;
 	background: linear-gradient(to right, #FF4B2B, #FF416C);
 	margin: 0 !important;
-	border-top-right-radius: 0 !important;
-	border-bottom-right-radius: 0 !important;
+	border-top-left-radius: 0 !important;
+	border-bottom-left-radius: 0 !important;
 }
 
 .title {
@@ -56,6 +56,10 @@ body > .container > #container {
 }
 
 .signup {
+	font-weight: bolder !important;
+}
+
+.signup {
 	text-align: center;
 }
 
@@ -63,9 +67,25 @@ body > .container > #container {
 	width: 100%;
 }
 
-.btn-primary {
-	width: 100%;
-	font-size: 20px !important;
-	margin-top: 16px;
+#submit {
+    margin-top: 16px;
+    background-color: #007bff;
+    border: none;
+    padding: 5px 0;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 5px;
 }
 
+#submit:hover {
+    background-color: #0069d9;
+}
+
+.my-form p {
+    margin-bottom: 5px !important;
+    margin-top: 16px;
+}
+
+.my-form a {
+    font-size: 20px;
+}

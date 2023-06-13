@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="theme-color" content="#333" />
   <link rel="manifest" href="manifest.json" />
-  <!-- <link rel="stylesheet" type="text/css" href="../static/css/teampage.css" /> -->
+  <link rel="stylesheet" type="text/css" href="../static/css/register.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png"
@@ -25,27 +25,33 @@
     apiKey: "vXj90M2ifAvu8fS739jFKepTXtES72ur59sGR5TPK9c="
   </script>
 </head>
-<form method="POST" class="my-form">
-  {{ form.hidden_tag() }}
-  <div class="form-group">
-      {{ form.email.label(class="form-label") }}
-      {{ form.email(class="form-control") }}
+<div id="container">
+  <div class="jumbotron">
+    <h1 class="title">WRITING ASSISTANT</h1>
   </div>
-  <div class="form-group">
-      {{ form.username.label(class="form-label") }}
-      {{ form.username(class="form-control") }}
-  </div>
-  <div class="form-group">
-      {{ form.password.label(class="form-label") }}
-      {{ form.password(class="form-control") }}
-  </div>
-  <div class="form-group">
-      {{ form.pass_confirm.label(class="form-label") }}
-      {{ form.pass_confirm(class="form-control") }}
-  </div>
-  <div class="form-group">
-      {{ form.submit(class="btn btn-primary") }}
-  </div>
-</form>
+  <form method="POST" class="my-form">
+    {{ form.hidden_tag() }}
+    <h1 class="signup">Register</h1>
+    <div class="form-group">
+        {{ form.email.label(class="form-label") }}
+        {{ form.email(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.username.label(class="form-label") }}
+        {{ form.username(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.password.label(class="form-label") }}
+        {{ form.password(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.pass_confirm.label(class="form-label") }}
+        {{ form.pass_confirm(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.submit(class="btn btn-primary") }}
+    </div>
+  </form>
+</div>
 {% endblock %}
 

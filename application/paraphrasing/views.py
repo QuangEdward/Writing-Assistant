@@ -11,9 +11,13 @@ paraphrasing = Blueprint('paraphrasing',__name__, url_prefix='/paraphrasing')
 def para(text):
     response = openai.Completion.create (
         engine="text-davinci-003",
-        prompt=f"Please paraphrase the following text with the meaning not be changed.{text}",
+        prompt=f"I will give you text content, you will rewrite it and output that in a re-worded version of my text. \
+                Reword the text to convey the same meaning using different words and sentence structures.\
+                Avoiding plagiarism, improving the flow and readability of the text, and ensuring that the re-written content is unique and original. \
+                Keep the tone the same. Keep the meaning the same. Make sure the re-written content's number of characters is exactly the same as the original text's number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else. Now, using the concepts above, re-write the following text.\
+                Respond in the same language variety or dialect of the following text: {text}",
         max_tokens=1000,
-        n = 1,
+        n = 3,
         stop=None,
         temperature=0.6,
     )

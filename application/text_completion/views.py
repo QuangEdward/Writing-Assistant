@@ -10,10 +10,10 @@ completion = Blueprint('text_completion',__name__, url_prefix='/text_completion'
 
 def com(text):
     response = openai.Completion.create(
-        engine="text-davinci-002",
-        prompt=f"I want you to assume the role as a brilliant writting assistant who can complete the unfinished sentence,\
-              you have to express the following text in full with it's original text and new predictions based on the original meaning.\
-              Please do not tell me who you are: {text}",
+        engine="text-davinci-003",
+        prompt=f"I'll give you text. You'll pick up where the user left off and complete the following text with generated sentences in full with it's original text and output it longer to be more than twice the number of characters of the original text.\
+                 Keep the meaning the same. Only give me the output and nothing else.\
+                 Now, using the concepts above, complete the following text with generated sentences in full with it's original text. Cannot change the orginal text and respond in the same language variety or dialect of the following text: {text}",
         max_tokens=1024,
         n=3,
         stop=None,

@@ -36,7 +36,7 @@
           <a class="dropdown-item" href="{{url_for('plagiarism_check.index')}}">Plagiarism</a>
         </div>
       {% elif 'profile' in session %}
-      <li class='nav-link'>
+      <li class='nav-item'>
         <a class="nav-link" href="{{url_for('auth.logout')}}">Log Out</a>
       </li>
       <li class="'nav-item dropdown">
@@ -67,7 +67,7 @@
   <div class="container mt-3"><hr>
     <div class="row">
         <div class="col-sm-6" id="docufix">
-            <a class="navbar-brand  text-justify" href="index.html"><img src="https://res.cloudinary.com/kuic/image/upload/v1572638901/docufix/Docufix_Logo_lnsgsr.svg" alt="DOCUFIX" id="image"></a>
+            <span>Writing Assistant</span>
             <p class="text-justify">This app was built by <a href="https://hng.tech/" target="_blank">HNGi6</a> interns</p>
         </div>
       <div class="col-sm-6 text-center">           
