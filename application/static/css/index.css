@@ -1,22 +1,83 @@
 body {
-	height: 100vh;
+    position: relative;
 }
 
 body > .container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-    height: 80vh;
+    padding: 0;
 }
 
-.jumbotron {
-	height: 45%;
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+img {
+    width: 1920px;
+    margin-left: -385px;
 }
 
-h1 {
-    font-weight: bolder !important; 
+h1{
+    font-size: 2em !important;
+    line-height: calc(33/16)em;
+    color: rgba(12, 10, 90, 0.8) !important;
 }
+#Introduction h3{
+    font-size: 2em;
+    line-height: calc(33/16)em;
+    font-weight: bold;
+    color: #FF416C !important;
+}
+.btn-link{
+    color: rgba(12, 10, 90, 0.8) !important;
+    font-size: 0.8em !important;
+    text-decoration: none !important;
+}
+.btn-link:hover{
+    color: #3B1F9E !important;
+    text-decoration: none !important;
+}
+
+.card{
+    border-color: #3B1F9E !important;
+}
+
+.card-header{
+    background-color: #FFFFFF !important;
+    border-bottom: 1px solid #3B1F9E !important;
+}
+.list-inline-item a{
+    color:  #828282 !important;
+}
+p{
+    text-align: justify;
+}
+.disclaimer{
+    text-decoration: none;
+    font-size: 1.3em !important;
+    color: #3B1F9E !important;
+
+}
+.disclaimer a:hover{
+    color: #FFFFFF !important;
+    background-color: #3B1F9E !important;
+}
+a:hover{
+    text-decoration: none !important;
+    color: orange !important;
+}
+.btn-primary{
+    color: #3B1F9E !important;
+    background-color: #ffffff !important;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold !important;
+    font-size: 0.875em;
+    line-height: 1.1675em;
+    width: 14.1875em;
+    height: 2.5em;
+   
+    border: 1px solid #FFFFFF !important;
+    border-radius: 20px !important;
+}
+#Introduction{
+    width: 100%;
+    margin-top: 10%;
+    margin-bottom: 2%;
+    align-self: center;
+}
+

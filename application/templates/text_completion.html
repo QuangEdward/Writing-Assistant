@@ -31,14 +31,14 @@
 <div id="container">
   <form method="post">
     {{ form.hidden_tag() }}
-    {{ form.input_text.label(class="form-control-label") }}
+    <h3>{{ form.input_text.label(class="form-control-label") }}</h3>
     <div class="form-group">
       {{ form.input_text(class="form-control") }}
     </div>
     <button type="submit" class="btn btn-primary">Completion</button>
   </form>
   <div class="result">
-    <span>Results:</span>
+    <h3>Results:</h3>
     <div class="result-box">
     {% if completion %}
       {% for completions in completion %}
