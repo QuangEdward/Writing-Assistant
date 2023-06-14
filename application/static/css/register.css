@@ -62,11 +62,13 @@ body > .container > #container {
 
 .form-group {
 	width: 100%;
+	margin: 0 !important;
+	height: 15%;
 }
 
 .btn-primary {
 	width: 100%;
 	font-size: 20px !important;
-	margin-top: 16px;
+	margin-top: 20px;
 }
 
