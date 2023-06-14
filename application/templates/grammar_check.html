@@ -37,21 +37,10 @@
     </div>
     <button type="submit" class="btn btn-primary">Check Text</button>
   </form>
-  {% if highlighted_text %}
+  {% if highlighted_text, fix_errors %}
   <hr>
-  <h3>Highlighted Text</h3>
+  <h3>Check errors</h3>
   <p>{{ highlighted_text|safe }}</p>
-  {% endif %}
-  {% if grammar_errors %}
-  <hr>
-  <h3>Grammar Errors</h3>
-  <ul>
-    {% for error in grammar_errors %}
-    <li>{{ error }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %}
-  {% if fix_errors %}
   <hr>
   <h3>Correction for the following text</h3>
   <ul>

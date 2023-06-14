@@ -27,5 +27,31 @@
 </head>
   <div class="jumbotron">
     <h1>WRITING ASSISTANT</h1>
+    <h1>Text Completion History</h1>
+  
+    {% if completion %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Input Text</th>
+            <th>Output Text</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for completions in completion %}
+            <tr>
+              <td>{{ completions.input_text }}</td>
+              <td>{{ completions.output_text }}</td>
+              <td>{{ completions.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No text completions found.</p>
+    {% endif %}
   </div>
 {% endblock %}
+
+

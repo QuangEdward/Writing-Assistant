@@ -1,0 +1,12 @@
+<!-- account.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Account Information</h1>
+  <p>Email: {{ email }}</p>
+  <p>Name: {{ name }}</p>
+  <!-- Add the following line to display the profile image -->
+  <img src="{{ profile_image }}" alt="Profile Image">
+
+{% endblock %}

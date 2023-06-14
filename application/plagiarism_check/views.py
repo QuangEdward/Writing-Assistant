@@ -28,14 +28,16 @@ def compare_texts(input_text, document):
     input_tokens = set(preprocess_text(input_text).split())
     document_tokens = set(preprocess_text(document).split())
     similarity = len(input_tokens.intersection(document_tokens)) / len(input_tokens.union(document_tokens))
-    return similarity
+    percentage = similarity * 100
+    return percentage
 
 @plagiarism.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
     form = InputForm()
     plagiarism_check = None
-
+    total = 0
+    doc = 0
     if form.validate_on_submit():
         input_text = form.input_text.data
         search_results = list(search_documents(input_text))
@@ -52,8 +54,14 @@ def index():
 
             similarity = compare_texts(input_text, document)
             scores.append((result, similarity))
-
+            total += similarity
+            doc += 1
         scores.sort(key=lambda x: x[1], reverse=True)
         plagiarism_check = (input_text, scores)
+        if doc > 0:
+            sum_percentage = total / doc
+        else:
+            sum_percentage = 0
 
-    return render_template('plagiarism_check.html', form=form, plagiarism_check=plagiarism_check)
+        return render_template('plagiarism_check.html', form=form, plagiarism_check=plagiarism_check, total = sum_percentage)
+    return render_template('plagiarism_check.html', form=form, plagiarism_check=plagiarism_check, total = total)

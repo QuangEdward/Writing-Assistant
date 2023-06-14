@@ -36,7 +36,7 @@
     <button type="submit" class="btn btn-primary">Paraphase</button>
 </form>
 {% if plagiarism_check %}
-    <h2>Results:</h2>
+    <h2>Results: {{total|round(2)}}%</h2>
     <p><strong>Input Text:</strong> {{ plagiarism_check[0] }}</p>
     {% if plagiarism_check[1] %}
         <p><strong>Most Similar Results:</strong></p>

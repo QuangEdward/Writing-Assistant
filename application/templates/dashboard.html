@@ -1,0 +1,27 @@
+<!-- dashboard.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Activity History</h1>
+
+  {% if completions %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Input Text</th>
+          <th>Output Text</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for completion in completions %}
+          <tr>
+            <td>{{ completion.text }}</td>
+            <td>{{ completion.output }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No activity history found.</p>
+  {% endif %}
+{% endblock %}
