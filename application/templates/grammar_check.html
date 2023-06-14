@@ -20,35 +20,43 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-
+  <link rel="stylesheet" href="../static/css/grammar.css">
   <title>Docufix | Team Page</title>
   <script type="text/javascript" src="//widget.instabot.io/jsapi/rokoInstabot.js" crossorigin>
     apiKey: "vXj90M2ifAvu8fS739jFKepTXtES72ur59sGR5TPK9c="
   </script>
 </head>
-<div class="container">
-  <h1>Grammar Check</h1>
-  <hr>
-  <form method="post">
-    {{ form.hidden_tag() }}
-    <div class="form-group">
-      {{ form.input_text.label(class="form-control-label") }}
-      {{ form.input_text(class="form-control") }}
+<h1>Grammar Check</h1>
+<hr>
+<div id="container">
+  <div class="text-content">
+    <form method="post">
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+        <h3>{{ form.input_text.label(class="form-control-label") }}</h3>
+        {{ form.input_text(class="form-control") }}
+      </div>
+      <button type="submit" class="btn btn-primary">Check Text</button>
+    </form>
+    {% if highlighted_text %}
+    <hr>
+    <div class="highlight-text">
+      <h3>Highlighted Text</h3>
+      <div class="highlight-text-box">{{ highlighted_text|safe }}</div>
+    {% endif %}
     </div>
-    <button type="submit" class="btn btn-primary">Check Text</button>
-  </form>
-  {% if highlighted_text, fix_errors %}
-  <hr>
-  <h3>Check errors</h3>
-  <p>{{ highlighted_text|safe }}</p>
-  <hr>
-  <h3>Correction for the following text</h3>
-  <ul>
-    {% for fix_error in fix_errors %}
-    <li>{{ fix_error|safe }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %}
+    {% if fix_errors %}
+    <hr>
+    <div class="text-correction">
+      <h3>Correction for the following text</h3>
+      {% for fix_error in fix_errors %}
+      <div class="correction-box">
+        {{ fix_error|safe }}
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
 </div>
 
 {% endblock %}

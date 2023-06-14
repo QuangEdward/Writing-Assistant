@@ -4,7 +4,7 @@ import openai
 from flask import Blueprint, Flask, render_template, redirect, url_for, request, jsonify
 from application.text_completion.forms import InputForm
 from application.auth.auth_decorator import login_required
-from application.models import User, TextCompletion
+from application.models import User
 from flask_login import current_user
 from application import db
 

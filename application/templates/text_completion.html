@@ -20,29 +20,32 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-  
+      <link rel="stylesheet" href="../static/css/Paraphrase.css">
     <title>Docufix | Team Page</title>
     <script type="text/javascript" src="//widget.instabot.io/jsapi/rokoInstabot.js" crossorigin>
       apiKey: "vXj90M2ifAvu8fS739jFKepTXtES72ur59sGR5TPK9c="
     </script>
   </head>
-<div class="container">
-<h1>Text Completion Tool</h1>
-<hr>
-<form method="post">
+  <h1>Text Completion Tool</h1>
+  <hr>
+<div id="container">
+  <form method="post">
     {{ form.hidden_tag() }}
+    {{ form.input_text.label(class="form-control-label") }}
     <div class="form-group">
-      {{ form.input_text.label(class="form-control-label") }}
       {{ form.input_text(class="form-control") }}
     </div>
     <button type="submit" class="btn btn-primary">Completion</button>
-</form>
-{% if completion %}
-    <h2>Results:</h2>
-    <ul>
-    {% for completions in completion %}
-        <li>{{ completions }}</li>
-    {% endfor %}
-    </ul>
-{% endif %}
+  </form>
+  <div class="result">
+    <span>Results:</span>
+    <div class="result-box">
+    {% if completion %}
+      {% for completions in completion %}
+      <div class="result-choice">{{ completions }}</div>
+      {% endfor %}
+    {% endif %}
+    </div>
+  </div>
+</div>
 {% endblock %}
