@@ -49,12 +49,14 @@ def index():
             user_id = None
             auth_id = None
 
-        text_completion = TextCompletion(
-            user_id=user_id,
-            auth_id=auth_id,
-            input_text=input_text,
-            output_text=completion_text_str
-        )
+        for i, output_text in enumerate(completion_text):
+            text_completion = TextCompletion(
+                user_id=user_id,
+                auth_id=auth_id,
+                input_text=input_text,
+                output_text=output_text
+            )
+            db.session.add(text_completion)
         db.session.add(text_completion)
         db.session.commit()
 

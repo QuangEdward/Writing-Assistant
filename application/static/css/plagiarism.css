@@ -17,7 +17,7 @@ body > .container {
 }
 
 form {
-    height: 400px;
+    height: 100%;
 }
 
 .form-group textarea {
@@ -29,9 +29,16 @@ form {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
+.btn-primary {
+    margin-top: 30px;
+    padding: 12px 15px;
+    font-size: 20px;
+}
+
 .plagiarism-check {
     display: flex;
     justify-content: space-between;
+    margin-top: 30px;
 }
 
 .text-box {
@@ -58,8 +65,13 @@ form {
 	width: 250px;
 	height: 250px;
 	border-radius: 50%;
+    border: 1px solid #ccc;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
+.progress-circular h2{
+    font-weight: bold;
+}
 
 .text-check-box {
     height: 300px;

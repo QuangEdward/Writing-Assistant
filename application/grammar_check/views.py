@@ -1,10 +1,13 @@
 # application/grammar_check/views.py
 import os
 import openai
-from flask import Blueprint, Flask, render_template, redirect, url_for, request, jsonify
+from flask import Blueprint, render_template, request, session
 from application.grammar_check.forms import InputForm
-import spacy
 from application.auth.auth_decorator import login_required
+from application import db
+from application.models import Grammarcheck, User
+from flask_login import current_user
+
 # from application.models import Grammarcheck
 from flask_login import current_user
 from application import db
@@ -67,11 +70,12 @@ def fix(text):
 
 
 
-@grammar_check.route('/', methods =['GET','POST'])
+@grammar_check.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
     form = InputForm()
     highlighted_text = None
+    fix_errors = None
     grammar_errors = None
 
     if form.validate_on_submit():
@@ -80,9 +84,31 @@ def index():
         # perform grammar check
         highlighted_text, grammar_errors = gram(input_text)
         fix_errors = fix(input_text)
+        grammar_check_str = "\n".join(fix_errors)
 
-        return render_template('grammar_check.html', form=form, highlighted_text=highlighted_text, grammar_errors=grammar_errors, fix_errors = fix_errors)
+        if current_user.is_authenticated:
+            user_id = current_user.id
+            auth_id = None
+        elif 'profile' in session:
+            user_id = None
+            auth_id = current_user.auth.id if hasattr(current_user, 'auth') else None
+        else:
+            user_id = None
+            auth_id = None
 
+        grammar_check = Grammarcheck(
+            user_id=user_id,
+            auth_id=auth_id,
+            input_text=input_text,
+            output_text=grammar_check_str
+        )
+
+        db.session.add(grammar_check)
+        db.session.commit()
+
+        fix_errors = fix_errors
+
+        return render_template('grammar_check.html', form=form, highlighted_text=highlighted_text,grammar_errors= grammar_errors, fix_errors=fix_errors)
     return render_template('grammar_check.html', form=form)
 # def index():
 #     form = InputForm()

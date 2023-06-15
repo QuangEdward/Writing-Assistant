@@ -12,10 +12,10 @@
         </tr>
     </thead>
     <tbody>
-        {% for completion in user_completions.items %}
+        {% for grammarcheck in user_grammarcheck.items %}
         <tr>
-            <td>{{ completion.timestamp, completion.input_text }}</td>
-            <td>{{ completion.output_text }}</td>
+            <td>{{ grammarcheck.timestamp, grammarcheck.input_text }}</td>
+            <td>{{ grammarcheck.output_text }}</td>
         </tr>
         {% endfor %}
     </tbody>

@@ -1,0 +1,7 @@
+.nav-item:nth-child(5) > .nav-link {
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}

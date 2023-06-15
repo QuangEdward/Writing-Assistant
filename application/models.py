@@ -20,6 +20,7 @@ class User(db.Model, UserMixin):
     profile_image = db.Column(db.String(64), nullable=False, default='default_profile.png')
     is_active = db.Column(db.Boolean, default=True)
     completions = db.relationship('TextCompletion', backref='user', lazy='dynamic')
+    grammarcheck = db.relationship('Grammarcheck', backref='user', lazy='dynamic')
 
     def __init__(self, email, username, password):
         self.email = email
@@ -41,6 +42,7 @@ class Auth(db.Model):
     name = db.Column(db.String(120), nullable=False)
 
     completions = db.relationship('TextCompletion', backref='auth', lazy='dynamic')
+    grammarcheck = db.relationship('Grammarcheck', backref='auth', lazy='dynamic')
 
     def __init__(self, email, name):
         self.email = email
@@ -69,6 +71,28 @@ class TextCompletion(db.Model):
 
     def __repr__(self):
         return f"TextCompletion - User: {self.user.username}, Input Text: {self.input_text}"
+    
+
+
+class Grammarcheck(db.Model):
+    __tablename__ = 'grammar_check'
+
+    id = db.Column(db.Integer, primary_key=True)
+    input_text = db.Column(db.Text, nullable=False)
+    output_text = db.Column(db.Text, nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    auth_id = db.Column(db.Integer, db.ForeignKey('auth.id'))
+
+    def __init__(self, input_text, output_text, user_id = None, auth_id = None):
+        self.input_text = input_text
+        self.output_text = output_text
+        self.user_id = user_id
+        self.auth_id = auth_id  
+
+    def __repr__(self):
+        return f"Grammarcheck - User: {self.user.username}, Input Text: {self.input_text}"
     
 # class TextCompletion(db.Model):
 #     __tablename__ = 'text_completions'
@@ -110,6 +134,7 @@ class TextCompletion(db.Model):
 
 #     def __repr__(self):
 #         return f"Grammarcheck - User: {self.user.username}, Input Text: {self.input_text}"
+
 
 
 # class Paraphrasing(db.Model):

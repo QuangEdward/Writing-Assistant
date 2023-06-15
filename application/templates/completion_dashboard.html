@@ -1,4 +1,5 @@
-{% extends "base.html" %}
+<!-- dashboard.html -->
+{% extends 'base.html' %}
 
 {% block content %}
 <head>
@@ -9,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="theme-color" content="#333" />
     <link rel="manifest" href="manifest.json" />
-    <link rel="stylesheet" type="text/css" href="../static/css/plagiarism.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/dashboard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/png"
@@ -21,53 +22,31 @@
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
   
-    <title>Plagiarism | Writing Assistant</title>
+    <title>Dashboard | Writing Assistant</title>
     <script type="text/javascript" src="//widget.instabot.io/jsapi/rokoInstabot.js" crossorigin>
       apiKey: "vXj90M2ifAvu8fS739jFKepTXtES72ur59sGR5TPK9c="
     </script>
-  </head>
-  <h1 style="text-align: center;margin-top: 30px; font-weight: bolder;">Plagiarism Check</h1>
-  <hr>
-  <form method="POST">
-      {{ form.hidden_tag() }}
-      <h3>{{ form.input_text.label(class="form-control-label") }}</h3>
-      <div class="form-group">
-        {{ form.input_text(class="form-control") }}
-      </div>
-      <button type="submit" class="btn btn-primary">Paraphase</button>
-  </form>
-  {% if plagiarism_check %}
-  <div class="plagiarism-check">
-    <div class="text-box">
-      <h3>Input Text:</h3>
-      <div class="text-check-box"> {{ plagiarism_check[0] }}</div>
-    </div>
-    <div class="result">
-      <h2>Results: </h2>
-      <div class="circle">
-        <div class="progress-circular">
-          <h2 class="value">{{total|round(2)}}</h2>
-          <h2>%</h2>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script src="../static/js/plagiarism.js"></script>
-      {% if plagiarism_check[1] %}
-          <h3>Most Similar Results:</h3>
-          <ol>
-              {% for result in plagiarism_check[1] %}
-                  <li><a href="{{ result[0] }}">{{ result[0] }}</a> ({{ result[1] }}% similarity)</li>
-              {% endfor %}
-          </ol>
-      {% else %}
-          <p>No matching documents found.</p>
-      {% endif %}
-  {% endif %}
-  </ul>
-  
+</head>
+  <h1>Activity History</h1>
 
-
+  <table>
+    <tr>
+        <th>Input Text</th>
+        <th>Output Text</th>
+        <th>Time</th>
+    </tr>
+        {% for completion in user_completions.items %}
+    <tr>
+        <td>{{ completion.input_text }}</td>
+        <td>{{ completion.output_text }}</td>
+        <td>{{ completion.timestamp }}</td>
+    </tr>
+    {% endfor %}
+</table>
 {% endblock %}
+
+<!-- 
+có hai cách để ghi giờ nhé 1 là ghi ngay cạnh input như t làm
+hai là m tách cái thẻ timestap ra <p>{{ completion.timestamp}}</p>-->
 
 
