@@ -62,7 +62,6 @@ def index():
         plagiarism_check = (input_text, scores)
 
         # Convert plagiarism_check to string representation
-        output = "\n".join(plagiarism_check)
 
         if current_user.is_authenticated:
             user_id = current_user.id
@@ -74,18 +73,18 @@ def index():
             user_id = None
             auth_id = None
 
-        for i, output_text in enumerate(plagiarism_check):
+        for i, (result, similarity) in enumerate(scores):
             plagiarism_text = Plagiarismcheck(
                 user_id=user_id,
                 auth_id=auth_id,
                 input_text=input_text,
-                output_text=output_text
+                output_text=f"Result: {result}, Similarity: {similarity}"
+                
             )
             db.session.add(plagiarism_text)
-        db.session.add(plagiarism_text)
         db.session.commit()
 
-        plagiarism_check = output
+        plagiarism_check = plagiarism_check
 
         return render_template('plagiarism_check.html', form=form, plagiarism_check=plagiarism_check, total=sum_percentage)
     return render_template('plagiarism_check.html', form=form, plagiarism_check=plagiarism_check, total=total)

@@ -1,0 +1,37 @@
+h1 {
+    padding-top: 30px !important;
+    text-align: center;
+    font-weight: bold !important;
+}
+
+.dropdown:nth-child(5) > .dropdown-toggle, .dropdown:nth-child(5) > .dropdown-menu > .dropdown-item:first-child {
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
+  }
+
+table, th, td {
+    border: 1px solid #ccc;
+    margin-top: 30px;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.input, .output {
+    width: 40%;
+    padding: 10px 0;
+}
+
+.input, .time, .output {
+    font-size: 20px;
+    text-align: center;
+}
+
+.time-text {
+    text-align: center;
+}
+
+.output-text, .input-text {
+    padding: 10px;
+}
