@@ -7,7 +7,8 @@ from application import app, oauth, OAuth
 from flask import render_template,url_for,flash,redirect,request,Blueprint
 from authlib.integrations.flask_client import OAuth
 from application.auth.auth_decorator import login_required
-
+from application import db
+from application.models import Auth
 
 auth = Blueprint('auth',__name__, url_prefix='/auth')
 
@@ -52,6 +53,13 @@ def authorize():
     # and set ur own data in the session not the profile from google
     session['profile'] = user_info
     session.permanent = True  # make the session permanant so it keeps existing after broweser gets closed
+
+    # Store the user in the database
+    user = Auth.query.filter_by(email=user_info['email']).first()
+    if user is None:
+        user = Auth(email=user_info['email'], name=user_info['name'])
+        db.session.add(user)
+        db.session.commit()
     return redirect(url_for('auth.hello_world'))
 
 @auth.route('/logout')

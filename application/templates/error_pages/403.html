@@ -1,6 +1,22 @@
 {% extends "base.html" %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/Writing-Assistant/application/static/css/errorstyle/error.css">
+  <title>Error 404</title>
+  <style>
+    .jumbotron {
+      height: 75vh; 
+      margin-top: 30px;
+      background-image: url(https://blogvault.net/wp-content/uploads/2020/10/403-forbidden-request-forbidden-by-administrative-rules.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  </style>
+</head>
 {% block content %}
   <div class="jumbotron">
-    <h1>403 Access Forbidden!</h1>
+    
   </div>
 {% endblock %}

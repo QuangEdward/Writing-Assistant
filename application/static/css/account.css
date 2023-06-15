@@ -1,7 +1,7 @@
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -24,11 +24,7 @@ body > .container > #container {
 	width: 100%;
 }
 
-.nav-item:nth-child(2) > .nav-link {
-	background: #fff;
-}
-
-.nav-item:last-child > .nav-link {
+.nav-item:nth-child(4) > .nav-link {
     background: linear-gradient(to right, #FF4B2B, #FF416C);
 }
 
@@ -36,7 +32,7 @@ body > .container > #container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	width: 100%;
+	width: 50%;
 	background-color: #fff;
 	padding: 20px 40px;
 	border-radius: 10px;
@@ -45,7 +41,7 @@ body > .container > #container {
 }
 
 .jumbotron {
-	width: 100%;
+	width: 50%;
 	max-height: 100%;
 	display: flex;
 	justify-content: center;
@@ -54,29 +50,25 @@ body > .container > #container {
 	margin: 0 !important;
 	border-top-right-radius: 0 !important;
 	border-bottom-right-radius: 0 !important;
+    color: #fff;
 }
 
-.title {
-	text-align: center;
-	font-size: 55px !important;
-	font-weight: bolder !important;
-	color: #fff !important;
-}
-
-.signup {
-	text-align: center;
-	font-weight: bolder !important;
+h1 {
+    text-align: center;
+    font-weight: bolder;
 }
 
 .form-group {
-	width: 100%;
-	margin: 0 !important;
-	height: 15%;
+    height: 15%;
 }
 
 .btn-primary {
-	width: 100%;
-	font-size: 20px !important;
+    width: 100%;
+	padding: 12px 15px;
+	font-size: 20px;
 	margin-top: 20px;
 }
 
+.form-label {
+    font-size: 20px;
+  }

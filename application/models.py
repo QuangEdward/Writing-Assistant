@@ -14,17 +14,17 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(64), unique=True, index=True)
+    email = db.Column(db.String(64), index=True)
     username = db.Column(db.String(64), unique=True, index=True)
-    password_hash = db.Column(db.String(128))
+    password_hash = db.Column(db.String(128)) 
     profile_image = db.Column(db.String(64), nullable=False, default='default_profile.png')
-    google_id = db.Column(db.String(64), unique=True, index=True)
+    is_active = db.Column(db.Boolean, default=True)
+    completions = db.relationship('TextCompletion', backref='user', lazy='dynamic')
 
-    def __init__(self, email=None, username=None, password=None, google_id=None):
+    def __init__(self, email, username, password):
         self.email = email
         self.username = username
-        self.password_hash = generate_password_hash(password) if password else None
-        self.google_id = google_id
+        self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
@@ -33,27 +33,43 @@ class User(db.Model, UserMixin):
         return f"Username {self.username}"
 
 
-# class TextCompletion(db.Model):
-#     __tablename__ = 'text_completions'
+class Auth(db.Model):
+    __tablename__ = 'auth'
 
-#     id = db.Column(db.Integer, primary_key=True)
-#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-#     input_text = db.Column(db.Text, nullable=False)
-#     output_text = db.Column(db.Text, nullable=False)
-#     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    name = db.Column(db.String(120), nullable=False)
+
+    completions = db.relationship('TextCompletion', backref='auth', lazy='dynamic')
+
+    def __init__(self, email, name):
+        self.email = email
+        self.name = name
+
+    def __repr__(self):
+        return f'<User {self.email}>'
+
+
+class TextCompletion(db.Model):
+    __tablename__ = 'text_completions'
+
+    id = db.Column(db.Integer, primary_key=True)
+    input_text = db.Column(db.Text, nullable=False)
+    output_text = db.Column(db.Text, nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    auth_id = db.Column(db.Integer, db.ForeignKey('auth.id'))
+
+    def __init__(self, input_text, output_text, user_id = None, auth_id = None):
+        self.input_text = input_text
+        self.output_text = output_text
+        self.user_id = user_id 
+        self.auth_id = auth_id 
+
+    def __repr__(self):
+        return f"TextCompletion - User: {self.user.username}, Input Text: {self.input_text}"
     
-
-#     user = db.relationship('User', backref=db.backref('text_completions', lazy=True))
-
-#     def __init__(self, user_id, input_text, output_text):
-#         self.user_id = user_id
-#         self.input_text = input_text
-#         self.output_text = output_text
-
-#     def __repr__(self):
-#         return f"TextCompletion - User: {self.user.username}, Input Text: {self.input_text}"
-    
-
 # class TextCompletion(db.Model):
 #     __tablename__ = 'text_completions'
 

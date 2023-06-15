@@ -6,9 +6,16 @@ body > .container {
     padding: 0;
 }
 
+.nav-item:first-child > .nav-link {
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
+}
+
+.nav-item:nth-child(2) > .nav-link {
+	background: #fff;
+}
+
 img {
-    width: 1920px;
-    margin-left: -385px;
+    width: 100%;
 }
 
 h1{

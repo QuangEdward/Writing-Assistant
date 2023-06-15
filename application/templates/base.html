@@ -6,9 +6,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../static/css/header&footer.css" />
-    <link rel="stylesheet" type="text/css" href="../static/css/teampage.css" />
     <meta charset="utf-8">
-    <title></title>
+    <title>Writing Assistant</title>
   </head>
   <body>
     <ul class='nav'>
@@ -24,6 +23,9 @@
       </li>
       <li class='nav-item'>
         <a class="nav-link" href="{{url_for('users.account')}}">Account</a>
+      </li>
+      <li class='nav-item'>
+        <a class="nav-link" href="{{url_for('dashboard.index')}}">Dashboard</a>
       </li>
       <li class="'nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -68,16 +70,12 @@
     <div class="row">
         <div class="col-sm-6" id="docufix">
             <span>Writing Assistant</span>
-            <p class="text-justify">This app was built by <a href="https://hng.tech/" target="_blank">HNGi6</a> interns</p>
         </div>
       <div class="col-sm-6 text-center">           
           <ul class="list-inline text-center mt-3 pl-3">  
               <li class="list-inline-item">
                 <a class="text-center" href="contact.html">Contact us</a>
               </li>
-              <li class="list-inline-item">
-                  <a class="text-center" href="faq.html">FAQs</a>
-                </li>
                 <li class="list-inline-item">
                 <a class="text-center" href="whyuse.html">Why use Docufix</a>
               </li>

@@ -10,7 +10,7 @@ from application.users.picture_handler import add_profile_pic
 users = Blueprint('users',__name__)
 
 # Register
-@users.route('/register', methods=['GET', 'POST'])
+@users.route('/register',methods=['GET','POST'])
 def register():
     form = RegistrationForm()
 
@@ -24,7 +24,7 @@ def register():
         flash('Thanks for registration!')
         return redirect(url_for('users.login'))
 
-    return render_template('register.html', form=form)
+    return render_template('register.html',form=form)
 
 
 

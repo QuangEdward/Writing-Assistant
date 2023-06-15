@@ -4,24 +4,26 @@
 {% block content %}
   <h1>Activity History</h1>
 
-  {% if completions %}
-    <table class="table">
-      <thead>
+  <table>
+    <thead>
         <tr>
-          <th>Input Text</th>
-          <th>Output Text</th>
+            <th>Input Text</th>
+            <th>Output Text</th>
         </tr>
-      </thead>
-      <tbody>
-        {% for completion in completions %}
-          <tr>
-            <td>{{ completion.text }}</td>
-            <td>{{ completion.output }}</td>
-          </tr>
+    </thead>
+    <tbody>
+        {% for completion in user_completions.items %}
+        <tr>
+            <td>{{ completion.timestamp, completion.input_text }}</td>
+            <td>{{ completion.output_text }}</td>
+        </tr>
         {% endfor %}
-      </tbody>
-    </table>
-  {% else %}
-    <p>No activity history found.</p>
-  {% endif %}
+    </tbody>
+</table>
 {% endblock %}
+
+<!-- 
+có hai cách để ghi giờ nhé 1 là ghi ngay cạnh input như t làm
+hai là m tách cái thẻ timestap ra <p>{{ completion.timestamp}}</p>-->
+
+

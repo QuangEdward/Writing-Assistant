@@ -1,0 +1,72 @@
+hr {
+    border:  1px solid #F26767 !important;
+    width: 100%;
+}
+
+body > .container {
+    width: 100%;
+    min-height: 80vh;
+}
+
+.nav-item:nth-child(2) > .nav-link {
+	background: #fff;
+}
+
+.dropdown-item:last-child, .dropdown-toggle {
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
+}
+
+form {
+    height: 400px;
+}
+
+.form-group textarea {
+    height: 300px !important;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.form-group textarea:focus {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.plagiarism-check {
+    display: flex;
+    justify-content: space-between;
+}
+
+.text-box {
+    height: 400px;
+    width: 70%;
+}
+
+.result {
+    width: 25%;
+}
+
+.circle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+	align-items: center;
+}
+
+.progress-circular {
+    display: flex;
+    justify-content: center;
+	align-items: center;
+    position: relative;
+	width: 250px;
+	height: 250px;
+	border-radius: 50%;
+}
+
+
+.text-check-box {
+    height: 300px;
+    background: #fff;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    overflow-y: auto;
+}

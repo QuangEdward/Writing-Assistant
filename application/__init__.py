@@ -46,6 +46,7 @@ from application.text_completion.views import completion
 from application.grammar_check.views import grammar_check
 from application.plagiarism_check.views import plagiarism
 from application.auth.views import auth
+from application.dashboard.views import dashboard
 
 app.register_blueprint(core)
 app.register_blueprint(users)
@@ -55,3 +56,4 @@ app.register_blueprint(completion)
 app.register_blueprint(grammar_check)
 app.register_blueprint(plagiarism)
 app.register_blueprint(auth)
+app.register_blueprint(dashboard)

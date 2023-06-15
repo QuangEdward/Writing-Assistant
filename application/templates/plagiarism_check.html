@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="theme-color" content="#333" />
     <link rel="manifest" href="manifest.json" />
-    <link rel="stylesheet" type="text/css" href="../static/css/teampage.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/plagiarism.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/png"
@@ -26,18 +26,33 @@
       apiKey: "vXj90M2ifAvu8fS739jFKepTXtES72ur59sGR5TPK9c="
     </script>
   </head>
-<h1>Plagiarism Check</h1>
+<h1 style="text-align: center;margin-top: 30px; font-weight: bolder;">Plagiarism Check</h1>
+<hr>
 <form method="POST">
     {{ form.hidden_tag() }}
+    <h3>{{ form.input_text.label(class="form-control-label") }}</h3>
     <div class="form-group">
-      {{ form.input_text.label(class="form-control-label") }}
       {{ form.input_text(class="form-control") }}
     </div>
     <button type="submit" class="btn btn-primary">Paraphase</button>
 </form>
 {% if plagiarism_check %}
-    <h2>Results: {{total|round(2)}}%</h2>
-    <p><strong>Input Text:</strong> {{ plagiarism_check[0] }}</p>
+<div class="plagiarism-check">
+  <div class="text-box">
+    <h3>Input Text:</h3>
+    <div class="text-check-box"> {{ plagiarism_check[0] }}</div>
+  </div>
+  <div class="result">
+    <h2>Results: </h2>
+    <div class="circle">
+      <div class="progress-circular">
+        <h2 class="value">{{total|round(2)}}</h2>
+        <h2>%</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../static/js/plagiarism.js"></script>
     {% if plagiarism_check[1] %}
         <p><strong>Most Similar Results:</strong></p>
         <ol>
