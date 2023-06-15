@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="theme-color" content="#333" />
     <link rel="manifest" href="manifest.json" />
-    <link rel="stylesheet" type="text/css" href="../static/css/dashboard.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/dashboard_completion.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/png"
@@ -27,19 +27,19 @@
       apiKey: "vXj90M2ifAvu8fS739jFKepTXtES72ur59sGR5TPK9c="
     </script>
 </head>
-  <h1>Activity History</h1>
+  <h1>Activity History Text Completion</h1>
 
   <table>
     <tr>
-        <th>Input Text</th>
-        <th>Output Text</th>
-        <th>Time</th>
+        <th class="input">Input Text</th>
+        <th class="output">Output Text</th>
+        <th class="time">Time</th>
     </tr>
         {% for completion in user_completions.items %}
     <tr>
-        <td>{{ completion.input_text }}</td>
-        <td>{{ completion.output_text }}</td>
-        <td>{{ completion.timestamp }}</td>
+        <td class="input-text">{{ completion.input_text }}</td>
+        <td class="output-text">{{ completion.output_text }}</td>
+        <td class="time-text">{{ completion.timestamp }}</td>
     </tr>
     {% endfor %}
 </table>

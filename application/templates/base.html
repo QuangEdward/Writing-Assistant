@@ -29,10 +29,10 @@
           Dashboard
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="{{url_for('grammar_check.index')}}">Paraphase</a>
+          <a class="dropdown-item" href="{{url_for('dashboard.paraphasing')}}">Paraphase</a>
           <a class="dropdown-item" href="{{url_for('dashboard.textcompletion')}}">Text completion</a>
           <a class="dropdown-item" href="{{url_for('dashboard.grammarcheck')}}">Grammar check</a>
-          <a class="dropdown-item" href="{{url_for('plagiarism_check.index')}}">Plagiarism</a>
+          <a class="dropdown-item" href="{{url_for('dashboard.plagiarism')}}">Plagiarism</a>
         </div>
       <li class="'nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,6 +48,16 @@
       <li class='nav-item'>
         <a class="nav-link" href="{{url_for('auth.logout')}}">Log Out</a>
       </li>
+      <li class="'nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dashboard
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="">Paraphase</a>
+          <a class="dropdown-item" href="">Text completion</a>
+          <a class="dropdown-item" href="">Grammar check</a>
+          <a class="dropdown-item" href="">Plagiarism</a>
+        </div>
       <li class="'nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Tools

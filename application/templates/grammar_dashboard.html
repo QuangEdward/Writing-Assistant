@@ -2,20 +2,47 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Activity History</h1>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png"
+      href="https://res.cloudinary.com/thecavemann/image/upload/v1571839870/logo_g4kuoa.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="theme-color" content="#333" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" type="text/css" href="../static/css/dashboard_grammar.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png"
+      href="https://res.cloudinary.com/thecavemann/image/upload/v1571839870/logo_g4kuoa.png" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  
+    <title>Dashboard | Writing Assistant</title>
+    <script type="text/javascript" src="//widget.instabot.io/jsapi/rokoInstabot.js" crossorigin>
+      apiKey: "vXj90M2ifAvu8fS739jFKepTXtES72ur59sGR5TPK9c="
+    </script>
+</head>
+  <h1>Activity History Grammar Check</h1>
 
   <table>
     <thead>
         <tr>
-            <th>Input Text</th>
-            <th>Output Text</th>
+            <th class="input">Input Text</th>
+            <th class="output">Output Text</th>
+            <th class="time">Time</th>
         </tr>
     </thead>
     <tbody>
         {% for grammarcheck in user_grammarcheck.items %}
         <tr>
-            <td>{{ grammarcheck.timestamp, grammarcheck.input_text }}</td>
-            <td>{{ grammarcheck.output_text }}</td>
+            <td class="input-text">{{ grammarcheck.input_text }}</td>
+            <td class="output-text">{{ grammarcheck.output_text }}</td>
+            <td class="time-text">{{ grammarcheck.timestamp }}</td>
         </tr>
         {% endfor %}
     </tbody>
@@ -24,6 +51,6 @@
 
 <!-- 
 có hai cách để ghi giờ nhé 1 là ghi ngay cạnh input như t làm
-hai là m tách cái thẻ timestap ra <p>{{ completion.timestamp}}</p>-->
+hai là m tách cái thẻ timestap ra <p>{{ completion.timestamp }}</p>-->
 
 

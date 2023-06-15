@@ -21,6 +21,8 @@ class User(db.Model, UserMixin):
     is_active = db.Column(db.Boolean, default=True)
     completions = db.relationship('TextCompletion', backref='user', lazy='dynamic')
     grammarcheck = db.relationship('Grammarcheck', backref='user', lazy='dynamic')
+    paraphase = db.relationship('Paraphrasing', backref='user', lazy='dynamic')
+    plagiarismcheck = db.relationship('Plagiarismcheck', backref='user', lazy='dynamic')
 
     def __init__(self, email, username, password):
         self.email = email
@@ -43,6 +45,8 @@ class Auth(db.Model):
 
     completions = db.relationship('TextCompletion', backref='auth', lazy='dynamic')
     grammarcheck = db.relationship('Grammarcheck', backref='auth', lazy='dynamic')
+    paraphase = db.relationship('Paraphrasing', backref='auth', lazy='dynamic')
+    plagiarismcheck = db.relationship('Plagiarismcheck', backref='auth', lazy='dynamic')
 
     def __init__(self, email, name):
         self.email = email
@@ -93,88 +97,46 @@ class Grammarcheck(db.Model):
 
     def __repr__(self):
         return f"Grammarcheck - User: {self.user.username}, Input Text: {self.input_text}"
-    
-# class TextCompletion(db.Model):
-#     __tablename__ = 'text_completions'
-
-#     id = db.Column(db.Integer, primary_key=True)
-#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-#     input_text = db.Column(db.Text, nullable=False)
-#     output_text = db.Column(db.Text, nullable=False)
-#     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
-    
-
-#     user = db.relationship('User', backref=db.backref('text_completions', lazy=True))
-
-#     def __init__(self, user_id, input_text, output_text):
-#         self.user_id = user_id
-#         self.input_text = input_text
-#         self.output_text = output_text
-
-#     def __repr__(self):
-#         return f"TextCompletion - User: {self.user.username}, Input Text: {self.input_text}"
-    
-
-# class Grammarcheck(db.Model):
-#     __tablename__ = 'grammar_check'
-
-#     id = db.Column(db.Integer, primary_key=True)
-#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-#     input_text = db.Column(db.Text, nullable=False)
-#     output_text = db.Column(db.Text, nullable=False)
-#     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
-    
-
-#     user = db.relationship('User', backref=db.backref('grammar_check', lazy=True))
-
-#     def __init__(self, user_id, input_text, output_text):
-#         self.user_id = user_id
-#         self.input_text = input_text
-#         self.output_text = output_text
-
-#     def __repr__(self):
-#         return f"Grammarcheck - User: {self.user.username}, Input Text: {self.input_text}"
 
 
+class Paraphrasing(db.Model):
+    __tablename__ = 'paraphrasing'
 
-# class Paraphrasing(db.Model):
-#     __tablename__ = 'paraphrasing'
+    id = db.Column(db.Integer, primary_key=True)
+    input_text = db.Column(db.Text, nullable=False)
+    output_text = db.Column(db.Text, nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
-#     id = db.Column(db.Integer, primary_key=True)
-#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-#     input_text = db.Column(db.Text, nullable=False)
-#     output_text = db.Column(db.Text, nullable=False)
-#     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
-    
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    auth_id = db.Column(db.Integer, db.ForeignKey('auth.id'))
 
-#     user = db.relationship('User', backref=db.backref('paraphrasing', lazy=True))
+    def __init__(self, input_text, output_text, user_id = None, auth_id = None):
+        self.input_text = input_text
+        self.output_text = output_text
+        self.user_id = user_id
+        self.auth_id = auth_id  
 
-#     def __init__(self, user_id, input_text, output_text):
-#         self.user_id = user_id
-#         self.input_text = input_text
-#         self.output_text = output_text
+    def __repr__(self):
+        return f"Paraphase - User: {self.user.username}, Input Text: {self.input_text}"
 
-#     def __repr__(self):
-#         return f"Paraphasing - User: {self.user.username}, Input Text: {self.input_text}"
-    
 
-# class Plagiarism_check(db.Model):
-#     __tablename__ = 'plagiarism'
+class Plagiarismcheck(db.Model):
+    __tablename__ = 'plagiarism'
 
-#     id = db.Column(db.Integer, primary_key=True)
-#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-#     input_text = db.Column(db.Text, nullable=False)
-#     output_text = db.Column(db.Text, nullable=False)
-#     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
-    
+    id = db.Column(db.Integer, primary_key=True)
+    input_text = db.Column(db.Text, nullable=False)
+    output_text = db.Column(db.Text, nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
-#     user = db.relationship('User', backref=db.backref('plagiarism', lazy=True))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    auth_id = db.Column(db.Integer, db.ForeignKey('auth.id'))
 
-#     def __init__(self, user_id, input_text, output_text):
-#         self.user_id = user_id
-#         self.input_text = input_text
-#         self.output_text = output_text
+    def __init__(self, input_text, output_text, user_id = None, auth_id = None):
+        self.input_text = input_text
+        self.output_text = output_text
+        self.user_id = user_id
+        self.auth_id = auth_id  
 
-#     def __repr__(self):
-#         return f"Paraphasing - User: {self.user.username}, Input Text: {self.input_text}"
+    def __repr__(self):
+        return f"Plagiarism - User: {self.user.username}, Input Text: {self.input_text}"
 

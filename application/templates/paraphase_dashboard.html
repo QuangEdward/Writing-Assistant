@@ -1,0 +1,27 @@
+<!-- dashboard.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Activity History</h1>
+
+  <table>
+    <thead>
+        <tr>
+            <th>Input Text</th>
+            <th>Output Text</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for paraphase in user_paraphase.items %}
+        <tr>
+            <td>{{ paraphase.timestamp, paraphase.input_text }}</td>
+            <td>{{ paraphase.output_text }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+
+
+

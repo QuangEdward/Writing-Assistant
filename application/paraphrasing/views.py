@@ -1,9 +1,12 @@
 # application/paraphrasing/views.py
 import os
 import openai
-from flask import Blueprint, Flask, render_template, redirect, url_for, request, jsonify
+from flask import Blueprint, Flask, render_template, redirect, url_for, request, jsonify, session
 from application.paraphrasing.forms import InputForm
 from application.auth.auth_decorator import login_required
+from application.models import User, Paraphrasing
+from flask_login import current_user
+from application import db
 openai.api_key = os.getenv("OPENAI_API_KEY")
 paraphrasing = Blueprint('paraphrasing',__name__, url_prefix='/paraphrasing')
 
@@ -34,6 +37,31 @@ def index():
     if form.validate_on_submit():
         input_text = form.input_text.data
         paraphrase_check = para(input_text)
+
+        if current_user.is_authenticated:
+            user_id = current_user.id
+            auth_id = None
+        elif 'profile' in session:
+            user_id = None
+            auth_id = current_user.auth.id if hasattr(current_user, 'auth') else None
+        else:
+            user_id = None
+            auth_id = None
+
+        for i, output_text in enumerate(paraphrase_check):
+            paraphase = Paraphrasing(
+                user_id=user_id,
+                auth_id=auth_id,
+                input_text=input_text,
+                output_text=output_text
+            )
+            db.session.add(paraphase)
+        db.session.add(paraphase)
+        db.session.commit()
+
+        paraphrase_check = paraphrase_check
+
+
         return render_template('paraphaser.html', form = form,  paraphrase_check =  paraphrase_check )
     return render_template('paraphaser.html', form = form )
 

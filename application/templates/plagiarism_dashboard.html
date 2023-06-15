@@ -1,0 +1,27 @@
+<!-- dashboard.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Activity History</h1>
+
+  <table>
+    <thead>
+        <tr>
+            <th>Input Text</th>
+            <th>Output Text</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for plagiarism in user_plagiarism.items %}
+        <tr>
+            <td>{{ plagiarism.timestamp, plagiarism.input_text }}</td>
+            <td>{{ plagiarism.output_text }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+
+
+

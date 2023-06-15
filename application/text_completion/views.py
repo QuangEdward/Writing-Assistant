@@ -1,12 +1,13 @@
 # application/text_completion/views.py
 import os
 import openai
-from flask import Blueprint, render_template, redirect, url_for, session
+from flask import Blueprint, render_template, session
 from application.text_completion.forms import InputForm
 from application.auth.auth_decorator import login_required
-from application.models import User, TextCompletion
-from flask_login import current_user
+from application.models import TextCompletion
+
 from application import db
+from flask_login import current_user
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 completion = Blueprint('text_completion', __name__, url_prefix='/text_completion')

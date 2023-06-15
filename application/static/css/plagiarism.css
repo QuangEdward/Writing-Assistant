@@ -8,13 +8,9 @@ body > .container {
     min-height: 80vh;
 }
 
-.nav-item:nth-child(2) > .nav-link {
-	background: #fff;
-}
-
-.dropdown-item:last-child, .dropdown-toggle {
+.dropdown:last-child > .dropdown-toggle, .dropdown:last-child > .dropdown-menu > .dropdown-item:last-child {
     background: linear-gradient(to right, #FF4B2B, #FF416C);
-}
+  }
 
 form {
     height: 100%;
@@ -81,4 +77,10 @@ form {
     border-radius: 4px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     overflow-y: auto;
+}
+
+.btn-primary {
+    margin-top: 30px !important;
+    padding: 12px 25px !important;
+    font-size: 20px !important;
 }
