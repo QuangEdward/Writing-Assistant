@@ -1,5 +1,8 @@
 # Writing-Assistant
 
+## Introduction
+
+Flask app that work as a writing assistant tool with features like grammar check, plagiarism check, text completion, and paraphrasing. The app will use API provied by OpenAI
 
 ## Setup
 
