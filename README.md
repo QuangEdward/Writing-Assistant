@@ -6,6 +6,27 @@
 
 Flask app that work as a writing assistant tool with features like grammar check, plagiarism check, text completion, and paraphrasing. The app will use API provied by OpenAI
 
+`Homepage`
+![Picture1](https://github.com/QuangEdward/Writing-Assistant/assets/118035047/bbf2e0c9-50da-4334-b557-bde596a758c6)
+
+`Login Page`
+![Picture2](https://github.com/QuangEdward/Writing-Assistant/assets/118035047/4fa0b18e-3863-42e6-b9ed-20dc28ab0b1e)
+
+`Grammar Check Page`
+![Picture3](https://github.com/QuangEdward/Writing-Assistant/assets/118035047/68b321d3-34cf-45a4-b3ae-ed870dd7658c)
+
+`Text Completion Page`
+![Picture4](https://github.com/QuangEdward/Writing-Assistant/assets/118035047/1e6051b2-c995-4655-bb23-f488bce66cff)
+
+`Paraphasing Page`
+![Picture5](https://github.com/QuangEdward/Writing-Assistant/assets/118035047/9812e9e1-4ea2-4f67-bbb5-48c341595813)
+
+`Plagiarism check`
+![Picture6](https://github.com/QuangEdward/Writing-Assistant/assets/118035047/52a55c10-b1cd-44ee-ba29-7ad49b3cd784)
+
+`Dashboard History`
+![Picture7](https://github.com/QuangEdward/Writing-Assistant/assets/118035047/017cf8dd-347f-48db-ab99-5068cb362ac5)
+
 ## Setup
 
 1. If you don’t have Python installed, [install it from here](https://www.python.org/downloads/).
