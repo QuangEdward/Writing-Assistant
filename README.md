@@ -3,6 +3,7 @@
 ## Introduction
 
 [About the app](https://docs.google.com/presentation/d/1BO6Mcb5ZCBXdjBPedfZSP0x05p3-KsZDJxDofyx4bb0/edit#slide=id.p)
+
 [Project Description](https://docs.google.com/document/d/10JErDP8uAoWpDrVB-21aRCHrIVHFkqycj1heG6tR32w/edit?usp=sharing)
 
 Flask app that work as a writing assistant tool with features like grammar check, plagiarism check, text completion, and paraphrasing. The app will use API provied by OpenAI
